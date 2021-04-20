@@ -48,7 +48,7 @@ pet = Pet.objects.get(id=1)
 pet.vaccinations.all()
 # QuerySet of all Vaccine instances associated with this Pet object through many-to-many relational mapping
 
-
+================================================================
 
 
 
