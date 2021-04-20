@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Pet 
+
+@admin.register(Pet) # associate class with a model
+class PetAdmin(admin.ModelAdmin):
+    pass
