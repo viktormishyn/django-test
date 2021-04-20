@@ -1,0 +1,6 @@
+django-admin startproject wisdompets
+
+python3 manage.py runserver
+
+python3 manage.py startapp adoptions
+
