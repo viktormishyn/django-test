@@ -1,6 +1,21 @@
-django-admin startproject wisdompets
+django-admin startproject <projectname>
+cd <projectname>
 
 python3 manage.py runserver
 
-python3 manage.py startapp adoptions
+python3 manage.py startapp <appname>
+
+-------------------------------------
+
+python3 manage.py makemigrations
+# generates migration files for later use (unapplied migration) using current model fields and db tables
+# creates numbered files in <appname>/migrations/
+
+python3 manage.py showmigrations
+
+
+python3 manage.py migrate
+# runs all migrations in the projectname
+# can also run only migrations in a specific app to a specific migration:
+# python3 manage.py migrate <appname> <number>
 
