@@ -19,3 +19,13 @@ python3 manage.py migrate
 # can also run only migrations in a specific app to a specific migration:
 # python3 manage.py migrate <appname> <number>
 
+
+python3 manage.py load_pet_data
+# seed db using custom script in adoptions/management/commands/
+
+-------------------------------------
+
+python3 manage.py createsuperuser
+
+
+
