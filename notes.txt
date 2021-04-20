@@ -27,5 +27,37 @@ python3 manage.py load_pet_data
 
 python3 manage.py createsuperuser
 
+-------------------------------------
+
+#Query data with Django ORM
+adoptions - <appname>
+Pet - <modelname>
+
+python3 manage.py shell
+# interactive python shell with django initialized
+
+from adoptions.models import Pet
+
+pets = Pet.objects.all()
+# QuerySet of all instances of the model
+
+pet = Pet.objects.get(id=1)
+# single instances
+# possible exceptions: DoesNotExist, MultipleObjectsReturned
+
+pet.vaccinations.all()
+# QuerySet of all Vaccine instances associated with this Pet object through many-to-many relational mapping
+
+
+
+
+
+
+
+
+
+
+
+
 
 
