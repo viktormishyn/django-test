@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt install libpq-dev
 python3 -m venv env
 source env/bin/activate
 
