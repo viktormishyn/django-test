@@ -27,6 +27,15 @@ python3 manage.py load_pet_data
 
 python3 manage.py createsuperuser
 
+# to register models in admin.py:
+from .models import <model>
+admin.site.register(<model>)
+
+# or better (this way we can see object fields):
+@admin.register(<model>)
+class <model>Admin(admin.ModelAdmin):
+    list_display = ['field1', 'field2', 'field3', 'field4', 'field5']
+
 -------------------------------------
 
 #Query data with Django ORM
