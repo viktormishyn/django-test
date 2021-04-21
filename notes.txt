@@ -1,3 +1,11 @@
+!!! After git clone:
+1) Run init.sh
+2) Create postgres db
+3) Apply migrations
+4) Create admin superuser
+
+-------------------------------------
+
 django-admin startproject <projectname>
 cd <projectname>
 
@@ -68,11 +76,57 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # in urls.py:
 from django.conf import settings
 from django.conf.urls.static import static
-urlpatterns = [
-    ...
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 python3 manage.py collectstatic
+
+-----------------------------------
+
+in similar way we add our media files:
+
+# in settings.py:
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
+
+#in urls.py:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+===============================================================
+
+POSTGRESQL
+
+sudo apt-get update
+sudo apt-get install python3-pip python3-venv python-dev libpq-dev postgresql postgresql-contrib
+
+sudo su - postgres
+psql
+
+CREATE DATABASE portfoliodb;
+CREATE USER portfoliodb_user WITH PASSWORD 'password';
+
+ALTER ROLE portfoliodb_user SET client_encoding TO 'utf8';
+ALTER ROLE portfoliodb_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE portfoliodb_user SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE portfoliodb TO portfoliodb_user;
+
+\q
+exit
+
+In Django settings.py:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': 'portfoliodb_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+======================================================================
 
 
 
