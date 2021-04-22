@@ -4,6 +4,7 @@ from .forms import HashForm
 import hashlib
 from .models import Hash
 from django.core.exceptions import ValidationError
+import time
 
 
 class FunctionalTestCase(TestCase):
@@ -27,6 +28,7 @@ class FunctionalTestCase(TestCase):
         self.browser.get('http://localhost:8000')
         text = self.browser.find_element_by_id('id_text')
         text.send_keys('hello')
+        time.sleep(5) # Wait for AJAX
         self.assertIn('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', self.browser.page_source)
 
     def tearDown(self):
