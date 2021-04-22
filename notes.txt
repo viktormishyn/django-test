@@ -135,6 +135,14 @@ Put webdriver into env/bin/ folder (to check path env variable: $PATH)
 python3 manage.py test
 # run all tests
 
+python3 manage.py test <appname>.tests.UnitTestCase
+# run just one test creates
+
+python3 manage.py test <appname>.tests.UnitTestCase.test_home_homepage_template
+# run just one test method
+
+
+
 
 
 
