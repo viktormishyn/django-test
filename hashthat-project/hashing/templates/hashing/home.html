@@ -1,1 +1,6 @@
-Hello world
+<form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }} <!--display as paragraph-->
+    <input name="submit" type="submit" value="Hash">
+
+</form>
