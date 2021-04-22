@@ -129,9 +129,11 @@ DATABASES = {
 
 ======================================================================
 
-SELENIUM
+for SELENIUM:
+Put webdriver into env/bin/ folder (to check path env variable: $PATH)
 
-1) Put webdriver into env/bin/ folder (to check path env variable: $PATH)
+python3 manage.py test
+# run all tests
 
 
 
