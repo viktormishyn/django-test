@@ -41,15 +41,20 @@ class UnitTestCase(TestCase):
     def test_hash_func_works(self):
         # testing hashlib.sha256 function
         text_hash = hashlib.sha256('hello'.encode('utf-8')).hexdigest()
-        self.assertEqual('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', text_hash)
+        self.assertEqual(
+            '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', text_hash)
 
-    def test_hash_object(self):
-        # testing creating Hash models and saving them to db
+    def saveHash(self):
         hash = Hash()
         hash.text = 'hello'
         hash.hash = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
         hash.save()
-        pulled_hash = Hash.objects.get(hash='2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
+        return hash
+
+    def test_hash_object(self):
+        # testing creating Hash models and saving them to db
+        hash = self.saveHash()
+        pulled_hash = Hash.objects.get(
+            hash='2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
         self.assertEqual(hash.text, pulled_hash.text)
-    
-    
+
