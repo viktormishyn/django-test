@@ -21,3 +21,10 @@ class FunctionalTestCase(TestCase):
 
     def tearDown(self):
         self.browser.quit()
+
+
+class UnitTestCase(TestCase):
+
+    def test_home_homepage_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'hashing/home.html')
