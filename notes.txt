@@ -12,6 +12,7 @@ cd <projectname>
 python3 manage.py runserver
 
 python3 manage.py startapp <appname>
+# or django-admin startapp <appname>
 
 -------------------------------------
 
@@ -127,6 +128,11 @@ DATABASES = {
 }
 
 ======================================================================
+
+SELENIUM
+
+1) Put webdriver into env/bin/ folder (to check path env variable: $PATH)
+
 
 
 
